@@ -21,6 +21,10 @@ class Player
     puts "#{@name} got blammed!"
   end
   
+  def print_name_and_health
+    puts "#{@name} (#{@health})"
+  end
+  
   def score
     @health + @name.length
   end
@@ -28,7 +32,12 @@ class Player
   def strong?
     @health > 100
   end
-end
+
+  def <=>(other)
+    other.score <=> self.score
+  end
+
+end # end class Player
 
 # test code
 if __FILE__ == $0

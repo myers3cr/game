@@ -18,9 +18,13 @@ class Game
     strong, wimpy = @players.partition { |p| p.strong? }
     puts "\n#{@title} Statistics:"
     puts "\n#{strong.length} strong players:"
-    strong.each { |p| puts "#{p.name} (#{p.health})"}
+    strong.each { |p| p.print_name_and_health}
     puts "\n#{wimpy.length} wimpy players:"
-    wimpy.each { |p| puts "#{p.name} (#{p.health})"}
+    wimpy.each { |p| p.print_name_and_health}
+    puts "\n#{@title} High Scores:"
+    @players.sort.each do |p|
+      puts "#{p.name.ljust(20, '.')} #{p.score}"
+    end
   end
 
   def play(rounds)
