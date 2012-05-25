@@ -29,16 +29,20 @@ class Game
 
   def play(rounds)
     puts "There are #{@players.size} players in #{@title}:\n\n"
-
     @players.each do |player|
       puts player
+    end
+    
+    treasures = TreasureTrove::TREASURES
+    puts "\nThere are #{treasures.length} treasures to be found:"
+    treasures.each do |t|
+      puts "A #{t.name} is worth #{t.points} points"
     end
     
     1.upto(rounds) do |round|
       puts "\nRound #{round}:"
       @players.each do |player|
         GameTurn.take_turn(player)
-        puts player
       end
     end
   end
