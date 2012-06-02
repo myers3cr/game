@@ -9,5 +9,5 @@ knuckleheads.add_player(Player.new("curly", 110))
 # knuckleheads.add_player(Player.new("simon"))
 # knuckleheads.add_player(Player.new("theodore"))
 
-knuckleheads.play(5)
+knuckleheads.play(3)
 knuckleheads.print_stats

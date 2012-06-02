@@ -3,6 +3,8 @@ require_relative 'treasure_trove'
 describe Treasure do
   
   before do
+    $stdout = StringIO.new # hack to prevent program output during testing
+    
     @treasure = Treasure.new(:hammer, 50)
   end
   
