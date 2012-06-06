@@ -1,13 +1,22 @@
 require_relative "game"
 
-knuckleheads = Game.new("Knuckleheads")
+game = Game.new("Knuckleheads")
+game.load(ARGV.shift || "knuckleheads.csv")
 
-knuckleheads.add_player(Player.new("moe"))
-knuckleheads.add_player(Player.new("larry", 90))
-knuckleheads.add_player(Player.new("curly", 110))
-# knuckleheads.add_player(Player.new("alvin"))
-# knuckleheads.add_player(Player.new("simon"))
-# knuckleheads.add_player(Player.new("theodore"))
+loop do
+  puts "\nHow many game rounds? ('quit to exit)"
+  answer = gets.chomp.downcase
+  case answer
+  when /^\d+$/
+    game.play(answer.to_i)
+  when 'quit', 'exit'
+    game.print_stats
+    break
+  else
+    puts "Please enter a number or 'quit'"
+  end
+  
+  game.save_high_scores("scores.csv")
+  
+end
 
-knuckleheads.play(3)
-knuckleheads.print_stats

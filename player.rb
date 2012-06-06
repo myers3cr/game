@@ -1,6 +1,8 @@
+require_relative 'treasure_trove'
+
 class Player
-  attr_reader :health
   attr_accessor :name
+  attr_reader :health
   
   def initialize(name, health = 100)
     @name = name.capitalize
@@ -8,6 +10,11 @@ class Player
     @found_treasures = Hash.new(0)
   end
   
+  def self.from_csv(line)
+    name, health = line.split(",")
+    new(name, health.to_i)
+  end
+    
   def to_s
     "I'm #{@name} with a health = #{@health}, points = #{points}, and score of #{score}."
   end
@@ -48,6 +55,12 @@ class Player
     @found_treasures.values.reduce(0, :+)
   end
 
+  def each_found_treasure
+    @found_treasures.each do |name, points|
+      yield Treasure.new(name, points)
+    end
+  end
+  
 end # end class Player
 
 # test code

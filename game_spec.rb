@@ -36,6 +36,13 @@ require_relative "game"
       game.play(1)
       player.points.should_not be_zero
     end
+    
+    it "can be created from a CSV string" do  
+      player = Player.from_csv("larry,150")
+
+      player.name.should == "Larry"
+      player.health.should == 150
+    end
 
     it "computes total points as the sum of all player points" do
       game = Game.new("Knuckleheads")
