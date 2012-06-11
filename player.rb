@@ -1,6 +1,9 @@
 require_relative 'treasure_trove'
+require_relative 'playable'
 
 class Player
+  include Playable
+  
   attr_accessor :name
   attr_reader :health
   
@@ -19,16 +22,6 @@ class Player
     "I'm #{@name} with a health = #{@health}, points = #{points}, and score of #{score}."
   end
   
-  def w00t
-    @health += 15
-    puts "#{@name} got w00ted!"
-  end
-  
-  def blam
-    @health -= 10
-    puts "#{@name} got blammed!"
-  end
-  
   def print_name_and_health
     puts "#{@name} (#{@health})"
   end
@@ -37,10 +30,6 @@ class Player
     @health + points
   end
   
-  def strong?
-    @health > 100
-  end
-
   def <=>(other)
     other.score <=> self.score
   end
