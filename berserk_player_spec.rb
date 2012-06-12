@@ -3,6 +3,8 @@ require_relative 'berserk_player'
 describe BerserkPlayer do
   
   before do
+    $stdout = StringIO.new # hack to prevent program output during testing
+
     @initial_health = 50 
     @player = BerserkPlayer.new("berserker", @initial_health)
   end

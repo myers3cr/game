@@ -2,6 +2,8 @@ require_relative 'clumsy_player'
 
 describe ClumsyPlayer do
   before do
+    $stdout = StringIO.new # hack to prevent program output during testing
+  
     @player = ClumsyPlayer.new("klutz")
   end
   
