@@ -1,5 +1,7 @@
-require_relative "game"
+require 'studio_game/game'
 
+module StudioGame
+  
   describe Game do
 
     before do
@@ -59,4 +61,6 @@ require_relative "game"
 
       game.total_points.should == 500
     end
-end
+  end # describe
+
+end # module StudioGame
